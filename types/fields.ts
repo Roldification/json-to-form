@@ -3,6 +3,11 @@ export type JsonFields = {
     type: string,
     placeholder?: string,
     row?: number,
+    options?: Array<{
+        name: string,
+        value: string | number,
+        disabled?: boolean
+    }>,
     buttons?: Array<{
         name: string,
         value: string | number,

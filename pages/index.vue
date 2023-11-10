@@ -10,8 +10,23 @@
                     <client-only>
                         <code-editor class="w-full" :wrap="true" :languages="[['json', 'JSON']]" v-model="jsonToConvert" ></code-editor>
                     </client-only>
-                    <div class="text-sm">
-                        Helper Functions
+                    <div class="text-sm w-1/4">
+                        Helper Functions: Just copy and paste the sample JSON code in the editor, inside an array of JSON objects.
+                        <Helperfunctions></Helperfunctions>
+
+                        <div class="mt-5">
+                            For conditional rendering, just add this JSON object as an <span class="italic font-semibold">"isShownWhen"</span> property in the JSON object field.
+                        </div>
+                        <div class="text-align-left">
+                            <pre class="text-align-left">
+{
+ "value": "harold",
+ "elements": [] <span class="text-green-500">// this will be the array of JSON
+    objects that will be shown when the value is
+    equal to the value property</span>
+}
+                            </pre>
+                        </div>
                     </div>
                     
                 </div>
@@ -21,7 +36,7 @@
                         <div v-if="json.length>0" class="space-y-5">
                             <template v-for="input in json">
                                 <Jsonfield :type="input.type" :label="input.label" :placeholder="input.placeholder" :row="input?.row"
-                                    v-model="input.value" :buttons="input.buttons" :is-shown-when="input?.isShownWhen"
+                                    v-model="input.value" :buttons="input.buttons" :is-shown-when="input?.isShownWhen" :options="input?.options"
                                 ></Jsonfield>
 
                             </template>
